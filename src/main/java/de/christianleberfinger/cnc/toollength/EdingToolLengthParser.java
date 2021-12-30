@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 
 /**
  * Parse an EdingCNC log and scan it for tool change keywords.
- * Note: The keywords fit the content of Sorotecs tool changer macro.
+ * Note: The keywords fit the content of Sorotec's tool changer macro.
  * If you use another macro, you must adapt the parse patterns accordingly.
  * <p>
  * Example logs:
