@@ -32,13 +32,13 @@ import java.util.stream.Stream;
 public class EdingToolLengthParser {
 
     private static final Charset LOGFILE_CHARSET = Charset.forName("Cp1252");
-    Pattern TOOL_CHANGE_BEGIN_PATTERN = Pattern.compile(".*:werkzeug wechseln$");
-    Pattern TOOL_NUMBER_PATTERN = Pattern.compile(".*mit werkzeugnr\\.: (\\d+) gewechselt$");
-    Pattern TOOL_LENGTH_PATTERN = Pattern.compile(".*werkzeuglänge = (\\d*\\.\\d+|\\d+\\.\\d*)$");
-    Pattern CPU_STATE_PATTERN = Pattern.compile(".*CPU State = (.*)$");
+    private static final Pattern TOOL_CHANGE_BEGIN_PATTERN = Pattern.compile(".*:werkzeug wechseln$");
+    private static final Pattern TOOL_NUMBER_PATTERN = Pattern.compile(".*mit werkzeugnr\\.: (\\d+) gewechselt$");
+    private static final Pattern TOOL_LENGTH_PATTERN = Pattern.compile(".*werkzeuglänge = (\\d*\\.\\d+|\\d+\\.\\d*)$");
+    private static final Pattern CPU_STATE_PATTERN = Pattern.compile(".*CPU State = (.*)$");
 
-    private MutableListMultimap<Integer, Double> toolLengths = Multimaps.mutable.list.empty();
-    private Path logFile;
+    private final MutableListMultimap<Integer, Double> toolLengths = Multimaps.mutable.list.empty();
+    private final Path logFile;
 
     public EdingToolLengthParser(Path logFile) {
         this.logFile = logFile;

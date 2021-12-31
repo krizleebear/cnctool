@@ -2,7 +2,7 @@ package de.christianleberfinger.cnc.toollength;
 
 import org.eclipse.collections.api.list.MutableList;
 import org.eclipse.collections.api.map.primitive.MutableIntIntMap;
-import org.eclipse.collections.api.multimap.list.MutableListMultimap;
+import org.eclipse.collections.api.multimap.Multimap;
 import org.eclipse.collections.api.multimap.sortedset.MutableSortedSetMultimap;
 import org.eclipse.collections.impl.factory.Multimaps;
 import org.eclipse.collections.impl.factory.primitive.IntIntMaps;
@@ -14,7 +14,7 @@ public class ToolUsage {
 
     private static final Comparator<Integer> DESCENDING = ((Comparator<Integer>) Integer::compare).reversed();
 
-    protected static void mostFrequentTools(MutableListMultimap<Integer, Double> allToolLengths) {
+    protected static void mostFrequentTools(Multimap<Integer, Double> allToolLengths) {
         MutableIntIntMap useCountPerTool = IntIntMaps.mutable.empty();
         allToolLengths.forEachKeyMultiValues((toolNumber, toolLengths) -> {
             AtomicInteger useCount = new AtomicInteger(0);

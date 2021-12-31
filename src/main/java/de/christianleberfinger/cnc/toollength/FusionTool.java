@@ -1,12 +1,6 @@
 package de.christianleberfinger.cnc.toollength;
 
-import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 public class FusionTool {
 
