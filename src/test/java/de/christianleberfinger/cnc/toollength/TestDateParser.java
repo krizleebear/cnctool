@@ -14,7 +14,7 @@ public class TestDateParser {
     void pathToDate() {
         Path path = Paths.get("logging\\20211029-100116--CNCLOG.txt");
         LocalDate date = EdingLogs.dateOfLog(path);
-        assertEquals(LocalDate.of(2021,10,29), date);
+        assertEquals(LocalDate.of(2021, 10, 29), date);
     }
 
 }
