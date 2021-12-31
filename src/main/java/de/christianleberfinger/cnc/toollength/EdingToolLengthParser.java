@@ -80,7 +80,7 @@ public class EdingToolLengthParser {
                 isSimulationMode.set(!isOperational);
             }
 
-            // ignore logs that
+            // ignore logs from simulation mode
             if (isSimulationMode.get()) {
                 return;
             }
