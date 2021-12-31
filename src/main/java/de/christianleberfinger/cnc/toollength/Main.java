@@ -30,6 +30,7 @@ public class Main {
         MutableListMultimap<Integer, Double> allLengths = Multimaps.mutable.list.empty();
         MutableSortedSet<LocalDate> logDates = SortedSets.mutable.empty();
 
+        // parse log files, collect information
         logFiles.forEach(logFile -> {
             ImmutableListMultimap<Integer, Double> toolLengths = EdingToolLengthParser.parse(logFile);
             allLengths.putAll(toolLengths);
@@ -40,8 +41,7 @@ public class Main {
         System.out.println(toolLengthCSV);
 
         System.out.println("Logs go back until: " + logDates.first());
-        mostFrequentTools(allLengths);
-
+        ToolUsage.mostFrequentTools(allLengths);
     }
 
     private static Stream<Path> allLogFiles(Path logDir) throws IOException {
@@ -57,25 +57,5 @@ public class Main {
         return LocalDate.parse(dateString, dateFormat);
     }
 
-    private static void mostFrequentTools(MutableListMultimap<Integer, Double> allToolLengths) {
-        MutableIntIntMap useCountPerTool = IntIntMaps.mutable.empty();
-        allToolLengths.forEachKeyMultiValues((toolNumber, toolLengths) -> {
-            AtomicInteger useCount = new AtomicInteger(0);
-            toolLengths.forEach(length -> useCount.incrementAndGet());
-            useCountPerTool.put(toolNumber, useCount.get());
-        });
-
-        MutableSortedSetMultimap<Integer, Integer> sortedMap = Multimaps.mutable.sortedSet.with(Integer::compare);
-
-        useCountPerTool.forEachKeyValue((tool, count) -> sortedMap.put(count, tool));
-
-        System.out.println("Most frequently used tools: ");
-        MutableList<Integer> descendingCount = sortedMap.keysView().toSortedList(DESCENDING);
-        descendingCount.forEach(count -> {
-            System.out.println(count + "x tool(s) " + sortedMap.get(count));
-        });
-    }
-
-    private static final Comparator<Integer> DESCENDING = ((Comparator<Integer>) Integer::compare).reversed();
 
 }
