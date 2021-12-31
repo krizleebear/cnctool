@@ -64,15 +64,13 @@ public class EdingToolLengthParser {
     }
 
     public void parse(Stream<String> toolLogs) {
-
-        // 18-06 22:19:38->CNC_EC_INFO CNC_RC_OK MotInitialize:motion.cpp(3995):CPU State = SIMULATION
-        // 19-06 13:32:26->CNC_EC_INFO CNC_RC_OK MotInitialize:motion.cpp(4069):CPU State = OPERATIONAL ETH
-
         AtomicInteger currentTool = new AtomicInteger(-1);
         AtomicBoolean isSimulationMode = new AtomicBoolean(true);
 
         toolLogs.forEachOrdered(line -> {
 
+            // 18-06 22:19:38->CNC_EC_INFO CNC_RC_OK MotInitialize:motion.cpp(3995):CPU State = SIMULATION
+            // 19-06 13:32:26->CNC_EC_INFO CNC_RC_OK MotInitialize:motion.cpp(4069):CPU State = OPERATIONAL ETH
             Matcher cpuStateMatcher = CPU_STATE_PATTERN.matcher(line);
             if (cpuStateMatcher.matches()) {
                 String cpuState = cpuStateMatcher.group(1);
@@ -82,6 +80,7 @@ public class EdingToolLengthParser {
                 isSimulationMode.set(!isOperational);
             }
 
+            // ignore logs that
             if (isSimulationMode.get()) {
                 return;
             }
