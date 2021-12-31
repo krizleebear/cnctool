@@ -1,15 +1,13 @@
 package de.christianleberfinger.cnc.toollength;
 
 import com.google.gson.Gson;
-import com.google.gson.annotations.SerializedName;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -39,6 +37,9 @@ public class FusionToolParser {
     }
 
     public static Optional<Path> findToolsFile(Path dir) throws IOException {
+
+        //TODO: detect most recent file
+
         return Files.list(dir).filter(FusionToolParser::isCompressedToolsFile).findAny();
     }
 
@@ -46,20 +47,9 @@ public class FusionToolParser {
         return f.getFileName().toString().endsWith(".tools");
     }
 
-    public static class FusionTools {
-
-        @SerializedName("data")
-        public List<FusionTool> tools = new ArrayList<>();
-
-        public Optional<FusionTool> get(int toolNumber) {
-            return tools.stream().filter(t -> t.getToolNumber() == toolNumber).findAny();
-        }
-
-        @Override
-        public String toString() {
-            return "FusionTools{" +
-                    "tools=" + tools +
-                    '}';
-        }
+    public static FusionTools parseDir(Path dir) throws IOException {
+        Path toolsFile = findToolsFile(dir).orElseThrow(FileNotFoundException::new);
+        return parse(toolsFile);
     }
+
 }

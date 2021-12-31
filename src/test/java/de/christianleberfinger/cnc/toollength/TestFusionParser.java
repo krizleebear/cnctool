@@ -17,7 +17,7 @@ public class TestFusionParser {
     @Test
     void testParse() throws IOException {
         Path jsonFile = dir.resolve("tools-example.json");
-        FusionToolParser.FusionTools tools = FusionToolParser.parse(jsonFile);
+        FusionTools tools = FusionToolParser.parse(jsonFile);
 
         assertNotNull(tools.tools);
         assertEquals(1, tools.tools.size());
@@ -42,7 +42,7 @@ public class TestFusionParser {
     @Test
     void unzipCompressedTools() throws IOException {
         Path toolsFile = FusionToolParser.findToolsFile(dir).orElseThrow(NoSuchElementException::new);
-        FusionToolParser.FusionTools tools = FusionToolParser.parse(toolsFile);
+        FusionTools tools = FusionToolParser.parse(toolsFile);
         assertEquals(1, tools.tools.size());
         FusionTool tool1 = tools.get(1).orElseThrow(NoSuchElementException::new);
         assertEquals("testtool", tool1.description);

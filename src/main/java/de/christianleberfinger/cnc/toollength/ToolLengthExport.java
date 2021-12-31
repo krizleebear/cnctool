@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class ToolLengthExport {
 
-    static String toCSV(Multimap<Integer, Double> allToolLengths) {
+    static String toCSV(Multimap<Integer, Double> allToolLengths, ToolDescription toolDescription) {
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
 
@@ -20,7 +20,7 @@ public class ToolLengthExport {
         for (int toolNumber = 0; toolNumber < 100; toolNumber++) {
             if (allToolLengths.containsKey(toolNumber)) {
                 RichIterable<Double> toolLengths = allToolLengths.get(toolNumber);
-                printRow(pw, toolNumber, toolLengths);
+                printRow(pw, toolNumber, toolLengths, toolDescription);
             }
         }
 
@@ -36,13 +36,16 @@ public class ToolLengthExport {
         pw.println();
     }
 
-    private static void printRow(PrintWriter pw, Integer toolNumber, Iterable<Double> toolLengths) {
+    private static void printRow(PrintWriter pw, Integer toolNumber, Iterable<Double> toolLengths, ToolDescription toolDescription) {
         pw.print("T");
         pw.print(toolNumber);
         pw.print("\t");
 
         int suggestedToolLength = summarizeToolLength(toolLengths);
         pw.print(suggestedToolLength);
+        pw.print("\t");
+
+        pw.print(toolDescription.getDescription(toolNumber));
         pw.print("\t");
 
         toolLengths.forEach(val -> {
