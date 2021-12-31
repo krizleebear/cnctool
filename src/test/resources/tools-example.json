@@ -1,0 +1,157 @@
+{
+  "data": [
+    {
+      "BMC": "carbide",
+      "GRADE": "Mill Generic",
+      "description": "2x15mm Zweischneider gerade",
+      "geometry": {
+        "CSP": false,
+        "DC": 2,
+        "HAND": true,
+        "LB": 20,
+        "LCF": 15,
+        "NOF": 2,
+        "OAL": 38,
+        "SFDM": 3.175,
+        "shoulder-length": 15.500000000000004
+      },
+      "guid": "942f8a3b-e084-4af1-8b8e-9ebc66dd6208",
+      "holder": {
+        "description": "Maritool CAT40-ER32-2.35",
+        "guid": "",
+        "product-id": "CAT40-ER32-2.35",
+        "product-link": "",
+        "segments": [
+          {
+            "height": 3.7592,
+            "lower-diameter": 38.1,
+            "upper-diameter": 50.038
+          },
+          {
+            "height": 21.2344,
+            "lower-diameter": 50.038,
+            "upper-diameter": 50.038
+          },
+          {
+            "height": 4.470400000000001,
+            "lower-diameter": 39.878,
+            "upper-diameter": 39.878
+          },
+          {
+            "height": 2.286,
+            "lower-diameter": 39.878,
+            "upper-diameter": 44.45
+          },
+          {
+            "height": 10.795000000000003,
+            "lower-diameter": 44.45,
+            "upper-diameter": 44.45
+          },
+          {
+            "height": 1.27,
+            "lower-diameter": 44.45,
+            "upper-diameter": 46.99
+          },
+          {
+            "height": 0.762,
+            "lower-diameter": 62.0268,
+            "upper-diameter": 63.5508
+          },
+          {
+            "height": 3.683,
+            "lower-diameter": 63.5508,
+            "upper-diameter": 63.5508
+          },
+          {
+            "height": 2.0066,
+            "lower-diameter": 63.5508,
+            "upper-diameter": 56.261
+          },
+          {
+            "height": 2.9972,
+            "lower-diameter": 56.261,
+            "upper-diameter": 56.261
+          },
+          {
+            "height": 2.0066,
+            "lower-diameter": 56.261,
+            "upper-diameter": 63.5508
+          },
+          {
+            "height": 3.6322,
+            "lower-diameter": 63.5508,
+            "upper-diameter": 63.5508
+          },
+          {
+            "height": 0.762,
+            "lower-diameter": 63.5508,
+            "upper-diameter": 62.0268
+          },
+          {
+            "height": 3.175,
+            "lower-diameter": 44.45,
+            "upper-diameter": 44.45
+          }
+        ],
+        "type": "holder",
+        "unit": "millimeters",
+        "vendor": "Maritool"
+      },
+      "post-process": {
+        "break-control": false,
+        "comment": "",
+        "diameter-offset": 3,
+        "length-offset": 3,
+        "live": true,
+        "manual-tool-change": false,
+        "number": 3,
+        "turret": 0
+      },
+      "product-id": "",
+      "product-link": "https://bla.com/",
+      "shaft": {
+        "segments": [
+          {
+            "height": 3.5,
+            "lower-diameter": 2,
+            "upper-diameter": 3.175
+          },
+          {
+            "height": 20,
+            "lower-diameter": 3.175,
+            "upper-diameter": 3.175
+          }
+        ],
+        "type": "shaft"
+      },
+      "start-values": {
+        "presets": [
+          {
+            "description": "SAMPLE preset for slotting in Aluminum",
+            "f_n": 0.023647058823529,
+            "f_z": 0.035470588235294,
+            "guid": "568a9f2c-cf62-4226-8c5c-d9119c9176de",
+            "n": 17000,
+            "n_ramp": 12000,
+            "name": "Aluminum - Slotting",
+            "stepdown": 2,
+            "stepover": 0.5,
+            "tool-coolant": "disabled",
+            "use-stepdown": true,
+            "use-stepover": true,
+            "v_c": 106.814150222053,
+            "v_f": 1206,
+            "v_f_leadIn": 1206,
+            "v_f_leadOut": 1206,
+            "v_f_plunge": 402,
+            "v_f_ramp": 1206
+          }
+        ]
+      },
+      "type": "flat end mill",
+      "unit": "millimeters",
+      "vendor": "someVendor"
+    }
+  ],
+  "version": 14
+}
